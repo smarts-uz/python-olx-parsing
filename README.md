@@ -1,17 +1,17 @@
-# Sports Parser
+# Olx Parsing 
 
 ## Quick Start
 
 
 
-Also check video [explanation](https://t.me/c/1928723945/42232/47311):
+Also check video [explanation]():
 
 
 
 
 
 ```python
-https://github.com/smarts-uz/python-sports-parser.git
+https://github.com/smarts-uz/python-olx-parsing
 ```
  Firstly create venv 
  ```python
@@ -23,12 +23,17 @@ pip install -r requirements.txt
 ```
 be sure you have .env file with it credentials
 
-## Parser
-This command, given an ID, will parse all Club Players of that ID from the database  
-```python
-py your_script.py ID
-```
-Example:  "py main.py 132 "
+[//]: # (## Parser)
+
+[//]: # (This command, given an ID, will parse all Club Players of that ID from the database  )
+
+[//]: # (```python)
+
+[//]: # (py your_script.py ID)
+
+[//]: # (```)
+
+[//]: # (Example:  "py main.py 132 ")
 
 
 
