@@ -12,10 +12,10 @@ load_dotenv()
 base_path = os.getenv('base_path_player')
 from bs4 import BeautifulSoup
 from deep_translator import GoogleTranslator
-from orm.db.models import Player
-from orm.db.models import Club
-from orm.db.models import Competition
-from orm.db.models import SystemConfig
+from Parsing.orm.db.models import Player
+from Parsing.orm.db.models import Club
+from Parsing.orm.db.models import Competition
+from Parsing.orm.db.models import SystemConfig
 
 def get_position_code(player_position):
     switcher = {

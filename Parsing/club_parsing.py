@@ -13,11 +13,11 @@ django.setup()
 load_dotenv()
 base_path = os.getenv('base_path_club')
 # Import your models for use in your script
-from orm.db.models import Club
+from Parsing.orm.db.models import Club
 import requests
 from bs4 import BeautifulSoup
 from deep_translator import GoogleTranslator
-from orm.db.models import Competition
+from Parsing.orm.db.models import Competition
 
 def fetch_content(url, retries=3, timeout=10):
     for attempt in range(retries):

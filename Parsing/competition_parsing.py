@@ -12,7 +12,7 @@ load_dotenv()
 # Define the base path for saving logos
 base_path = os.getenv('base_path_club')
 
-from orm.db.models import Competition
+from Parsing.orm.db.models import Competition
 import requests
 from bs4 import BeautifulSoup
 from deep_translator import GoogleTranslator
