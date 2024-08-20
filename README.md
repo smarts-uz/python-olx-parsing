@@ -38,6 +38,11 @@ Second, create an HR application inside the django_orm project:
 cd django_orm
 python manage.py startapp hr
 ```
+Cheking and updating DB models
+```python 
+python manage.py makemigrations
+python manage.py migrate
+```
 be sure you have .env file with it credentials
 
 
