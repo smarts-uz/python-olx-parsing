@@ -12,3 +12,7 @@ class Category(models.Model):
         managed = True
         db_table = 'Category'
 
+class Moda_stil(models.Model):
+    id = models.AutoField(primary_key=True)
+    Cust
+
