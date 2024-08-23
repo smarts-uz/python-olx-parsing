@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'orm.urls'
+ROOT_URLCONF = 'django_orm.urls'
 
 TEMPLATES = [
     {
@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'orm.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('db_name'),
-        'USER': os.getenv('db_user'),
-        'PASSWORD': os.getenv('password'),
-        'HOST': os.getenv('host'),
-        'PORT': os.getenv('port'),
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': '20031515',
+        'HOST': 'localhost',
+        'PORT': '5432',
     },
 }
 
