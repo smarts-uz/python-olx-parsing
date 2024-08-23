@@ -43,6 +43,18 @@ Cheking and updating DB models
 python manage.py makemigrations
 python manage.py migrate
 ```
+Using the parsing system
+positional arguments:
+  category_id  ID of the category
+  model_name   Name of the model to fetch [Moda_stil, Bolalar_dunyosi, Kochmas_mulk, Transport, Ish, Hayvonlar, Uy_va_Bog, Elektronika, Biznes_va_Xizmatlar, Xobbi_va_Sport, Tekinga_berish, Ayirboshlash]
+
+options:
+  -h, --help   show this help message and exit
+```python
+
+
+ python Category_parser_ID.py [category_id] [Category_name]
+```
 be sure you have .env file with it credentials
 
 
