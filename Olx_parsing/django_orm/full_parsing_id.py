@@ -3,12 +3,15 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 import time
+import click
 import django
 import argparse
 from one_Product_parser import get_product_details, download_image
+from dotenv  import load_dotenv
 
-# Django sozlamalarini sozlash
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_orm.settings')
+load_dotenv()  # Load environment variables from .env file
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'orm.settings')  # Ensure this is correct
 django.setup()
 
 from parserapp.models import Category, Moda_stil, Bolalar_dunyosi, Kochmas_mulk, Transport, Ish, Hayvonlar, Uy_va_Bog, Elektronika, Biznes_va_Xizmatlar, Xobbi_va_Sport, Tekinga_berish, Ayirboshlash
@@ -72,18 +75,21 @@ def get_model_class(model_name):
     }
     return model_mapping.get(model_name)
 
+@click.command()
+@click.argument('category_id', type=int)
 def main(category_id):
+    """Kategoriya URL'dan mahsulot havolalarini olish."""
     try:
         category = Category.objects.get(id=category_id)
         start_url = category.category_url
-        model_name=category.model_name
+        model_name = category.model_name
     except Category.DoesNotExist:
-        print(f"Category with ID {category_id} does not exist.")
+        print(f"ID {category_id} bo'yicha kategoriya mavjud emas.")
         return
 
     category_model = get_model_class(model_name)
     if not category_model:
-        print(f"Model with name {model_name} does not exist.")
+        print(f"{model_name} nomli model mavjud emas.")
         return
 
     all_product_links = get_all_product_links(start_url)
@@ -93,15 +99,10 @@ def main(category_id):
             print(link)
             product_details = get_product_details(link, category_model)
             print(product_details)
-            # download_image(product_details['product_image_path'], product_details['product_name'])  # Make sure this matches your download_image function's parameters
+            # download_image(product_details['product_image_path'], product_details['product_name'])  # To'g'ri parametrlar
 
     else:
-        print("No product links found.")
+        print("Hech qanday mahsulot havolalari topilmadi.")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Fetch product links from a category URL.")
-    parser.add_argument('category_id', type=int, help="ID of the category")
-    # parser.add_argument('model_name', type=str, help="Name of the model to fetch [Moda_stil, Bolalar_dunyosi, Kochmas_mulk, Transport, Ish, Hayvonlar, Uy_va_Bog, Elektronika, Biznes_va_Xizmatlar, Xobbi_va_Sport, Tekinga_berish, Ayirboshlash]")
-
-    args = parser.parse_args()
-    main(args.category_id)
+    main()
